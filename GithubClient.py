@@ -15,10 +15,14 @@ class GithubClient:
         self._use_raw_response = use_raw_response
 
         # Get the Credentials..so I'm not storing them in this repo
-        gitconfig = ConfigParser()
-        gitconfig.readfp(open(os.path.expanduser("~/.gitconfig")))
-        self.username = gitconfig.get("github", "user")
-        self.password = gitconfig.get("github", "password")
+        try:
+            gitconfig = ConfigParser()
+            gitconfig.readfp(open(os.path.expanduser("~/.gitconfig")))
+            self.username = gitconfig.get("github", "user")
+            self.password = gitconfig.get("github", "password")
+        except:
+            # You should never use a bare except, except here.
+            pass
     
     def request(self, method, url, *args, **kwargs):
         """
