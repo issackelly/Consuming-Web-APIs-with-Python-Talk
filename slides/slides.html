@@ -1,0 +1,260 @@
+<!doctype html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+	<!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8" />
+	<title>Consuming Web APIs with Python - Issac Kelly - PyOhio July 30th 2011</title>
+	<meta name="description" content="Slides from Issac's talk on Consuming Web APIs, with Python. PyOhio 2011">
+	<meta name="author" content="Issac Kelly">
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	
+	<!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+	
+	<!-- CSS
+  ================================================== -->
+	<link rel="stylesheet" href="stylesheets/base.css">
+	<link rel="stylesheet" href="stylesheets/skeleton.css">
+	<link rel="stylesheet" href="stylesheets/layout.css">
+	
+	<!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
+	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
+	
+</head>
+<body>
+	<!-- Primary Page Layout
+	================================================== -->
+	
+	<!-- Delete everything in this .container and get started on your own site! -->
+    <nav>
+        <a href="#first"><img src="images/right-double-icon.png" class="flip"></a> <a href="#previous"><img src="images/right-icon.png" class="flip"></a> <span id="count"></span> <a href="#next"><img src="images/right-icon.png"></a> <a href="#last"><img src="images/right-double-icon.png"></a>
+    </nav>
+
+	<div class="container">	
+		<section class="slide shownslide" id="intro">
+    		<div class="sixteen columns">
+    			<h1 class="remove-bottom">Consuming Web APIs with Python</h1>
+    			<h4>Issac Kelly - PyOhio 2011 - July 30th, 2011<h4>
+    		</div>
+        </section>
+        
+        <section class="slide hidden" id="formats-and-conventions">
+            <div class="sixteen columns">
+                <h1>Some API Formats and Conventions</h1>
+            </div>
+            <div class="one-third column hidden" data-onnext="reveal">
+                <h3>REST</h3>
+            </div>
+            <div class="one-third column hidden" data-onnext="reveal">
+                <h3>XML-RPC</h3>
+            </div>
+            <div class="one-third column hidden" data-onnext="reveal">
+                <h3>SOAP</h3>
+                <div class="hidden" data-onnext="reveal">
+                    <blockquote>"Issac, Tell us how you really feel"</blockquote>
+                    <blockquote>..has all of the virtues I dislike, and none of the vices I admire <br/>&mdash;Churchil</blockquote>
+                <div>
+            </div>
+        </section>
+        
+        <section class="slide hidden" id="about-me">
+            <div class="sixteen columns">
+                <h1>Opinions Follow, your mileage may vary</h1>
+            </div>
+            <div class="one-third column hidden" data-onnext="reveal">
+                <h5>Issac Kelly</h5>
+                <h6><a href="http://twitter.com/issackelly/">Twitter</a> or <a href="mailto:issac@kellycreativetech.com">Email</a></h6>
+                <ul>
+                    <li>Highly Opinionated
+                    <li>Fiercely Independent
+                    <li>Python 1st, JavaScript 2nd
+                </ul>
+            </div>
+            <div class="one-third column hidden" data-onnext="reveal">
+                <h5>Kelly Creative Tech</h5>
+                <h6><a href="http://www.kellycreativetech.com/">Website</a></h6>
+                <ul>
+                    <li>2/3 NOT Issac (3/4 for the summer)
+                    <li>Web and Software Consulting
+                    <li>Emphasis on User Experience and simple solutions to problems
+                </ul>
+            </div>
+            <div class="one-third column hidden" data-onnext="reveal">
+                <h5>APIs we work with regularly</h5>
+                <ul>
+                    <li>FreshBooks
+                    <li>Internal bits
+                    <li>Payment Gateways (Authorize.net, PayPal)
+                    <li>"Cloud" Providers (Amazon, Github, Postmarkapp)
+                    <li>Other Web Services (Twitter, Facebook)
+                </ul>
+            </div>
+        </section>
+        
+        <section class="slide hidden" id="about-rest-1">
+            <div class="sixteen columns">
+                <h1>REST - Formalized HTTP</h1>
+            </div>
+            <div class="sixteen columns">
+                <h4>Authorization</h4>
+                <pre>GET /gists HTTP/1.1
+Host: api.github.com
+
+HTTP/1.1 401 Authorization Required
+Date: Sat, 30 July 2011 00:01:15 GMT
+WWW-Authenticate: Basic realm="Secure Area"
+Content-Type: text/html
+Content-Length: 0
+
+GET /gists HTTP/1.1
+Host: api.github.com
+Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
+</pre>
+            </div>
+        </section>
+        <section class="slide hidden" id="about-rest-2">
+            <div class="sixteen columns">
+                <h1>REST - Formalized HTTP</h1>
+            </div>
+            <div class="sixteen columns">
+                <h4>Each URL represents a Resource</h4>
+                <pre>GET /gists
+...
+
+GET /issues
+...
+
+POST /repos/issackelly/Consuming-Web-APIs-with-Python-Talk/issues
+...
+</pre>
+            </div>
+        </section>
+        <section class="slide hidden" id="about-rest-3">
+            <div class="sixteen columns">
+                <h1>REST - Formalized HTTP</h1>
+            </div>
+            <div class="sixteen columns">
+                <h4>Use your Verbs</h4>
+                <pre>POST /repos/issackelly/Consuming-Web-APIs-with-Python-Talk/issues
+Host: api.github.com
+Content-Type: application/json
+Content-Length: 311
+
+{...}
+
+HTTP/1.1 201 Created
+Location: https://api.github.com/repos/issackelly/Consuming-Web-APIs-with-Python-Talk/issues/1
+X-RateLimit-Limit: 5000
+X-RateLimit-Remaining: 4999
+
+GET /repos/issackelly/Consuming-Web-APIs-with-Python-Talk/issues/1
+...
+</pre>
+            </div>
+        </section>
+        <section class="slide hidden" id="about-rest-4">
+            <div class="sixteen columns">
+                <h1>REST - Formalized HTTP</h1>
+            </div>
+            <div class="sixteen columns">
+                <h4>Trust HTTP Codes</h4>
+                <pre>GET /repos/issackelly/Consuming-Web-APIs-with-Python-Talk/issues/1
+...
+
+HTTP/1.1 200 Found
+...
+
+GET /repos/issackelly/notreal
+...
+
+HTTP/1.1 404 Not Found
+
+POST /repos/issackelly/Consuming-Web-APIs-with-Python-Talk/issues
+...
+
+HTTP/1.1 400 Bad Request
+            </div>
+        </section>
+        <section class="slide hidden" id="about-rest-5">
+            <div class="sixteen columns">
+                <h1>REST - Formalized HTTP</h1>
+            </div>
+            <div class="eight columns">
+                <h4>Mind Data Formats</h4>
+                <ul>
+                    <li>Key/Value Pairs
+                    <li>Json/Yaml
+                    <li>XML
+                </ul>
+            </div>
+            <div class="eight columns hidden" data-onnext="reveal">
+                <h4>Learn Other Headers</h4>
+                <ul>
+                    <li>Content-Length
+                    <li>Content-Type
+                    <li>Accept-Language
+                    <li>...
+                </ul>
+            </div>    
+        </section>
+        <section class="slide hidden" id="onto-terminal">
+            <div class="sixteen columns">
+                <h1>Now, onto the terminal</h1>
+            </div>
+        </section>
+        <section class="slide hidden" id="breaking-rest">
+            <div class="sixteen columns">
+                <h1>Breaking REST, and into the Unknown</h1>
+            </div>
+            <div class="eight columns hidden" data-onnext="reveal">
+                <h3>Realtime Endpoints</h3>
+                <ul>
+                    <li>Long Polling
+                    <li>Websockets
+                    <li>HTTP Alike (XMPP?)
+                </ul>
+            </div>
+            <div class="eight columns hidden" data-onnext="reveal">
+                <h3>REST Anti-patterns</h3>
+                <ul>
+                    <li>Stateful URLs
+            </div>
+        </section>
+        <section class="slide hidden" id="questions">
+            <div class="sixteen columns">
+                <h1>Questions?</h1>
+                <ul>
+                    <li><a href="mailto:issac@kellycreativetech.com">Email (Hire!) Me</a>
+                    <li><a href="https://github.com/issackelly/Consuming-Web-APIs-with-Python-Talk/">This Talk</a>
+                    <li><a href="http://www.kellycreativetech.com/">Kelly Creative Tech</a>
+                </li>
+            </div>
+        </section>
+	</div><!-- container -->
+
+	<!-- JS
+	================================================== -->
+	<script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
+	<script src="javascripts/modernizr.custom.js"></script>
+	<script src="javascripts/jquery.scrollTo-min.js"></script>
+	<script src="javascripts/jquery.ba-hashchange.min.js"></script>
+	<script>window.jQuery || document.write("<script src='javascripts/jquery-1.6.2.min.js'>\x3C/script>")</script>
+	<script>if(Modernizr.touch) { document.write("<script src='javascripts/jquery.touchSwipe-1.2.4.js'>\x3C/script>"); }</script>
+	<script src="javascripts/app.js" type="text/javascript"></script>
+	
+<!-- End Document
+================================================== -->
+</body>
+</html>
