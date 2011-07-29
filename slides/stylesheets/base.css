@@ -56,7 +56,7 @@
 /* #Basic Styles
 ================================================== */
 	body { 
-		background: #fff;
+		background: #ccc;
 		font: 14px/21px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 		color: #444; 
 		-webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
@@ -67,9 +67,12 @@
 /* #Typography
 ================================================== */
 	h1, h2, h3, h4, h5, h6 { 
-		color: #181818; 
-		font-family: "Georgia", "Times New Roman", Helvetica, Arial, sans-serif;
-		font-weight: normal; }
+		color: #027405; 
+		font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-weight: normal; 
+		-moz-text-shadow: 0px -1px 0px rgba(255,255,255, 0.4);
+		-webkit-text-shadow: 0px -1px 0px rgba(255,255,255, 0.4);
+		text-shadow: 0px -1px 0px rgba(255,255,255, 0.4);}
 	h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; }
 	h1 { font-size: 46px; line-height: 50px; margin-bottom: 14px;}
 	h2 { font-size: 35px; line-height: 40px; margin-bottom: 10px; }
@@ -78,6 +81,17 @@
 	h5 { font-size: 17px; line-height: 24px; }
 	h6 { font-size: 14px; line-height: 21px; }
 	.subheader { color: #777; }
+	
+	h1{
+		font-size: 62px;
+		line-height:62px;
+		margin:36px 0 18px 0;;
+		font-family: league-gothic sans-serif;
+	}
+	h4{
+		font-family: Helvetica, sans-serif;
+		color:#222;
+	}
 
 	p { margin: 0 0 20px 0; }
 	p img { margin: 0; }
@@ -88,7 +102,7 @@
 	small { font-size: 80%; }
 	
 /*	Blockquotes  */
-	blockquote, blockquote p { font-size: 17px; line-height: 24px; color: #777; font-style: italic; }
+	blockquote, blockquote p { font-size: 17px; line-height: 24px; color: #222; font-style: italic; }
 	blockquote { margin: 0 0 20px; padding: 9px 20px 0 19px; border-left: 1px solid #ddd; }
 	blockquote cite { display: block; font-size: 12px; color: #555; }
 	blockquote cite:before { content: "\2014 \0020"; }
