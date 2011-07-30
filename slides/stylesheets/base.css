@@ -83,14 +83,15 @@
 	.subheader { color: #777; }
 	
 	h1{
-		font-size: 62px;
-		line-height:62px;
-		margin:36px 0 18px 0;;
-		font-family: league-gothic sans-serif;
+		font: 84px/92px league-gothic, sans-serif;
+		margin:36px 0 18px 0;
 	}
 	h4{
 		font-family: Helvetica, sans-serif;
 		color:#222;
+	}
+	h3, h5{
+		font-family: league-gothic, sans-serif;
 	}
 
 	p { margin: 0 0 20px 0; font-size: 1.6em;}
@@ -133,7 +134,7 @@
 	ol ol, ol ul { margin: 4px 0 5px 30px; font-size: 90%;  }
 	ul ul li, ul ol li,
 	ol ol li, ol ul li { margin-bottom: 6px; }
-	li { line-height: 18px; margin-bottom: 12px; }
+	li { line-height: 18px; margin-bottom: 12px; font-size:16px}
 	ul.large li { line-height: 21px; }
 	li p { line-height: 21px; }
 	
