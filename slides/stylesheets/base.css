@@ -75,11 +75,11 @@
 		text-shadow: 0px -1px 0px rgba(255,255,255, 0.4);}
 	h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; }
 	h1 { font-size: 46px; line-height: 50px; margin-bottom: 14px;}
-	h2 { font-size: 35px; line-height: 40px; margin-bottom: 10px; }
-	h3 { font-size: 28px; line-height: 34px; margin-bottom: 8px; }
-	h4 { font-size: 21px; line-height: 30px; margin-bottom: 4px; }
-	h5 { font-size: 17px; line-height: 24px; }
-	h6 { font-size: 14px; line-height: 21px; }
+	h2 { font-size: 38px; line-height: 40px; margin-bottom: 10px; }
+	h3 { font-size: 31px; line-height: 34px; margin-bottom: 8px; }
+	h4 { font-size: 28px; line-height: 30px; margin-bottom: 4px; }
+	h5 { font-size: 19px; line-height: 24px; }
+	h6 { font-size: 16px; line-height: 21px; }
 	.subheader { color: #777; }
 	
 	h1{
@@ -93,10 +93,9 @@
 		color:#222;
 	}
 
-	p { margin: 0 0 20px 0; }
+	p { margin: 0 0 20px 0; font-size: 1.6em;}
 	p img { margin: 0; }
-	p.lead { font-size: 21px; line-height: 27px; color: #777;  }
-	
+	p.lead { font-size: 21px; line-height: 27px; color: #777;  }	
 	em { font-style: italic; }
 	strong { font-weight: bold; color: #333; }
 	small { font-size: 80%; }
@@ -109,6 +108,9 @@
 	blockquote cite a, blockquote cite a:visited, blockquote cite a:visited { color: #555; }
 	
 	hr { border: solid #ddd; border-width: 1px 0 0; clear: both; margin: 10px 0 30px; height: 0; }
+
+	li, blockquote, pre { font-size: 1.6em;}
+	pre {font-family: monospace;}
 
 
 /* #Links
